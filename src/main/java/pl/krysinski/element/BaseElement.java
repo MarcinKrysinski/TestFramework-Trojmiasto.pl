@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.krysinski.driver.BaseDriver;
-import java.util.List;
+
 
 
 public class BaseElement {
@@ -19,35 +19,12 @@ public class BaseElement {
         this.locator = locator;
     }
 
-    WebElement waitUntilVisible() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
     WebElement waitUntilClickable() {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public boolean isDisplayed(String xpath){
-        return driver.findElement(By.xpath(xpath)).isDisplayed();
+    public WebElement isDisplayed(String id){
+        return driver.findElement(By.id(id));
     }
-
-    public boolean isEnabled(){
-        return waitUntilVisible().isEnabled();
-    }
-
-    public String getText(){
-        return waitUntilVisible().getText();
-    }
-
-    public String getAttribute(String attribute){
-        return waitUntilVisible().getAttribute(attribute);
-    }
-
-    protected List<WebElement> getElements(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return driver.findElements(locator);
-    }
-
-
 
 }

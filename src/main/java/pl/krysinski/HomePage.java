@@ -4,6 +4,7 @@ package pl.krysinski;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pl.krysinski.driver.BaseDriver;
 import pl.krysinski.element.Button;
 import pl.krysinski.element.Fields;
@@ -18,7 +19,7 @@ public class HomePage {
     private Button rodoButton;
     private Button searchButton;
     private TextField searchField;
-//    private String searchString;
+
 
     public HomePage(){
         contactField = new Fields(By.xpath("//a[contains(text(),'Kontakt')]"));
@@ -26,8 +27,6 @@ public class HomePage {
         rodoButton = new Button(By.xpath("//*[@id='rodo_accept']"));
         searchButton = new Button(By.xpath("//input[@id='search_submit_button']"));
         searchField = new TextField(By.xpath("//input[@id='search_input']"));
-//        searchString = "kino";
-
     }
 
     public HomePage openHomePage(){
@@ -64,22 +63,20 @@ public class HomePage {
     }
 
     public void switchingToTheContactPage(){
-//        openHomePage();
+
         scrollDownAtTheBottomPage();
         clickContactField();
     }
 
     public void search(String searchString){
-//        openHomePage();
         searchField.setText(searchString);
         searchButton.click();
-//        return new DashboardPage();
     }
     public void clickRodoButton(){
         rodoButton.click();
     }
 
-    public boolean rodoButtonIsDisplay(){
-        return rodoButton.isDisplayed("//*[@id='rodo_accept']") ;
+    public WebElement rodoMessage(){
+        return rodoButton.isDisplayed("rodo_info");
     }
 }

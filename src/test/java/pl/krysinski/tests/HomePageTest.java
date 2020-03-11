@@ -21,12 +21,8 @@ public class HomePageTest extends BaseTest{
     }
 
     @Test
-    void testAcceptRodoMessage(){
-
-        homePage.clickRodoButton();
-        boolean test = homePage.rodoButtonIsDisplay();
-        System.out.println(test);
-        Assert.assertFalse(homePage.rodoButtonIsDisplay(), "Rodo message didn't accepted");
+    void testRodoMessageIsDisplay(){
+        Assert.assertTrue(homePage.rodoMessage().isDisplayed(), "Rodo message didn't display");
     }
 
     @Test

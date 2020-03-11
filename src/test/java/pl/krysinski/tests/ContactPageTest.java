@@ -13,6 +13,7 @@ public class ContactPageTest extends BaseTest{
     void init(){
         homePage = new HomePage();
         homePage.openHomePage();
+        homePage.clickRodoButton();
 
     }
 
